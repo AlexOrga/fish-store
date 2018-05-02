@@ -16,13 +16,22 @@ const changeButtonText = () => {
 };
 
 // Add fish to "Basket"
-const moveTheCart = (e) => {
+const moveToCart = (e) => {
   const fishCard = $(e.target).closest('.fish');
   $('#snagged').append(fishCard);
+  $(e.target).text('Remove From Cart');
+  $(e.target).on('click', removeFromCart);
+};
+
+const removeFromCart = (e) => {
+  const fishCard = $(e.target).closest('.fish');
+  $('#available').append(fishCard);
+  $(e.target).text('Add To Cart');
+  $(e.target).on('click', moveToCart);
 };
 
 const bindEvents = () => {
-  $('button.add').on('click', moveTheCart);
+  $('button.add').on('click', moveToCart);
   $('#show-sale').click(() => {
     changeButtonText();
     filterFish();
