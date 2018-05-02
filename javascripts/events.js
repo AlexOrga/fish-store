@@ -22,7 +22,7 @@ const moveTheCart = (e) => {
 };
 
 const bindEvents = () => {
-  $('button.add').click(moveTheCart);
+  $('button.add').on('click', moveTheCart);
   $('#show-sale').click(() => {
     changeButtonText();
     filterFish();
